@@ -8,10 +8,8 @@
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
-  --text-secondary: #5a5a5a;
   --border-color: #e5e5ea;
   --accent-color: #007aff;
-  --modal-bg: #f2f2f7;
 }
 
 body {
@@ -31,13 +29,20 @@ body {
   padding: env(safe-area-inset-top, 20px) 20px env(safe-area-inset-bottom, 20px) 20px;
 }
 
+/* Gemeinsame Text-Styles */
+.live-date, .country-text, .blinking-timer, .center-number, .user-name, .colleague-name {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
 /* Header / Top Bar */
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid transparent;
 }
 
 .back-btn, .menu-btn {
@@ -49,19 +54,9 @@ body {
   cursor: pointer;
 }
 
-.arrow-left {
+.arrow-left, .ellipsis {
   font-size: 24px;
   color: var(--text-color);
-}
-
-.ellipsis {
-  font-size: 28px;
-  letter-spacing: 2px;
-  color: var(--text-color);
-}
-
-.top-title {
-  flex-grow: 1;
 }
 
 /* Hauptinhalt */
@@ -69,39 +64,26 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  justify-content: space-between;
   gap: 15px;
 }
 
-/* Sektion 1: Logo links, Nummer in der Mitte (angepasst: Nummer weiter nach oben) */
+/* Sektion 1: Logo links, Nummer in der Mitte */
 .logo-row {
   display: grid;
   grid-template-columns: 80px 1fr 80px;
-  align-items: start; /* Nach oben ausgerichtet */
+  align-items: start;
   padding: 5px 0 5px 0;
 }
 
-.logo-wrapper {
-  display: flex;
-  align-items: center;
-}
-
 .main-logo {
-  height: auto;
-  width: 100%;
-  max-width: 65px;
+  height: 35px; /* Kleiner */
+  width: auto;
   object-fit: contain;
 }
 
 .center-number {
-  font-size: 26px;
-  font-weight: 400; /* Nicht fett */
+  font-size: 26px; /* Beibehaltung der Größe, aber 400 */
   text-align: center;
-  letter-spacing: 1px;
-}
-
-.logo-row-spacer {
-  width: 80px;
 }
 
 /* Linie unter Logo/Nummer */
@@ -111,7 +93,7 @@ body {
   margin: 2px 0;
 }
 
-/* Sektion 2: Datum, Deutschland Kollegen (angepasst: rechtsbündig, nicht fett) */
+/* Sektion 2: Datum, Deutschland Kollegen, Blinking Timer */
 .info-row {
   display: flex;
   justify-content: space-between;
@@ -119,90 +101,55 @@ body {
   padding: 5px 0;
 }
 
-.left-info {
+.date-row {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.live-date {
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--text-color);
-}
-
-.country-text {
-  font-size: 19px;
-  font-weight: 400; /* Nicht fett */
-  text-align: right; /* Rechtsbündig */
-  letter-spacing: 0.5px;
-}
-
-.right-info {
-  display: flex;
-  align-items: flex-start;
-  padding-top: 2px;
+  align-items: center;
+  gap: 10px;
 }
 
 .blinking-timer {
-  font-size: 22px;
-  font-weight: 700;
-  color: #ff3b30;
   animation: blink-animation 1s steps(2, start) infinite;
 }
 
-/* Sektion 3: Bewegungslogo, schwebend nach links/rechts (angepasst: kleiner) */
+/* Sektion 3: Bewegungslogo, schwebend nach links/rechts */
 .animation-row {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  overflow: hidden;
   height: 60px;
 }
 
-.floating-logo-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
 .floating-logo {
-  height: 35px; /* Kleiner */
+  height: 25px; /* Noch kleiner */
   width: auto;
   object-fit: contain;
-  animation: sway-animation 4s linear infinite alternate; /* Linear für gerade Linie */
+  animation: sway-animation 0.44s linear infinite alternate; /* 3x schneller als 1.33s */
 }
 
-/* Sektion 4: QR-Code ganzseitig / groß */
+/* Sektion 4: QR-Code */
 .qr-row {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  padding: 10px 0;
 }
 
 .qr-container {
   width: 100%;
   max-width: 320px;
-  background-color: #f0f0f0; /* Leicht grauer Hintergrund für Kontrast */
+  background-color: #f0f0f0;
   border-radius: 18px;
   padding: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .qr-image {
   width: 100%;
-  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: contain;
 }
 
-/* Sektion 5: Benutzernamen ganz unten (angepasst: nicht fett) */
+/* Sektion 5: Benutzernamen */
 .footer-names {
   display: flex;
   flex-direction: column;
@@ -210,26 +157,13 @@ body {
   padding: 15px 0 25px 0;
 }
 
-.user-name {
-  font-size: 20px;
-  font-weight: 400; /* Nicht fett */
-}
-
-.colleague-name {
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--text-secondary);
-}
-
 /* --- ANIMATIONEN --- */
-
 @keyframes blink-animation {
   to {
     visibility: hidden;
   }
 }
 
-/* Schwebende Animation von links nach rechts (gerade Linie) */
 @keyframes sway-animation {
   0% {
     transform: translateX(-40px);
@@ -237,162 +171,4 @@ body {
   100% {
     transform: translateX(40px);
   }
-}
-
-/* --- SETTINGS MODAL (EINSTELLUNGSMENÜ) --- */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end; /* iOS-typischer Bottom Sheet Style */
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal-content {
-  background-color: var(--modal-bg);
-  width: 100%;
-  max-width: 500px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  padding: 24px 24px calc(24px + env(safe-area-inset-bottom, 20px)) 24px;
-  transform: translateY(100%);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid var(--border-color);
-  border-bottom: none;
-}
-
-.modal-overlay.active .modal-content {
-  transform: translateY(0);
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.modal-header h3 {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.close-modal {
-  font-size: 28px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  padding: 5px;
-}
-
-.modal-body {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group {
-  margin-bottom: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-group label {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-}
-
-.form-group input[type="text"] {
-  background-color: #2c2c2e;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  color: var(--text-color);
-  padding: 12px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.form-group input[type="text"]:focus {
-  border-color: var(--accent-color);
-}
-
-/* Custom File Upload Button */
-.custom-file-upload {
-  background-color: #2c2c2e;
-  border: 1px dashed var(--border-color);
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  color: var(--accent-color);
-  transition: background-color 0.2s ease;
-}
-
-.custom-file-upload:hover {
-  background-color: #3a3a3c;
-}
-
-.custom-file-upload input[type="file"] {
-  display: none;
-}
-
-.file-status {
-  font-size: 12px;
-  color: var(--text-secondary);
-  text-align: center;
-  margin-top: 4px;
-}
-
-/* Form Actions */
-.form-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.btn {
-  flex: 1;
-  padding: 14px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
-.btn-primary {
-  background-color: var(--accent-color);
-  color: #ffffff;
-}
-
-.btn-primary:active {
-  background-color: #0056b3;
-}
-
-.btn-secondary {
-  background-color: #2c2c2e;
-  color: var(--text-color);
-}
-
-.btn-secondary:active {
-  background-color: #3a3a3c;
 }
