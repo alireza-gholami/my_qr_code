@@ -1,6 +1,7 @@
 /* Reset und Basis-Styling */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #fff; color: #000; font-family: -apple-system, sans-serif; overflow-x: hidden; }
+:root { --bg-color: #ffffff; --text-color: #000000; --sway-range: 130px; }
+body { background-color: var(--bg-color); color: var(--text-color); font-family: -apple-system, sans-serif; overflow-x: hidden; }
 .app-container { display: flex; flex-direction: column; min-height: 100vh; padding: 10px; }
 
 /* Text Einheitlichkeit */
@@ -9,19 +10,20 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 }
 
 /* Header */
-.top-bar { display: flex; justify-content: flex-end; align-items: center; padding: 5px 0; }
+.top-bar { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
+.back-btn { cursor: pointer; font-size: 24px; padding: 5px; }
 .menu-btn { cursor: pointer; font-size: 24px; padding: 5px; }
 
 /* Sektion 1 */
 .logo-row { display: grid; grid-template-columns: 80px 1fr 80px; align-items: center; }
-.main-logo { height: 70px; width: auto; object-fit: contain; }
+.main-logo { height: 40px; width: auto; object-fit: contain; } /* Zurückgesetzt */
 .center-number { font-size: 26px; transform: translateY(-10px); text-align: center; }
 
 /* Sektion 2 */
 .info-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
 .blinking-timer { font-weight: 700 !important; font-size: 20px !important; animation: blink 1s steps(2, start) infinite; }
 
-/* Sektion 3 - Animation & Bounds (QR Code Breite: ~300px) */
+/* Sektion 3 - Animation & Bounds */
 .animation-row { display: flex; justify-content: center; height: 50px; width: 100%; overflow: hidden; }
 .floating-logo { height: 40px; width: auto; animation: sway 2s linear infinite alternate; }
 
@@ -36,10 +38,9 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 
 /* ANIMATIONEN */
 @keyframes blink { to { visibility: hidden; } }
-/* Bounds: QR Code ist 300px breit. Logo ist 40px breit. Bewegung muss innerhalb bleiben. */
 @keyframes sway { 
-  0% { transform: translateX(-130px); } 
-  100% { transform: translateX(130px); } 
+  0% { transform: translateX(calc(-1 * var(--sway-range))); } 
+  100% { transform: translateX(var(--sway-range)); } 
 }
 
 /* MODAL */

@@ -7,7 +7,8 @@ const APP_STATE = {
     validFrom: "01.06.2026 00:00",
     validUntil: "01.06.2026 03:00",
     qrCodeData: null, 
-    logoSpeed: 2 
+    logoSpeed: 2,
+    logoRange: 130
   },
   STORAGE_KEY: "HNV_PWA_STATE",
 
@@ -36,8 +37,12 @@ const APP_STATE = {
     const qrImg = document.getElementById("displayQR");
     if (this.settings.qrCodeData) qrImg.src = this.settings.qrCodeData;
     
+    // Logo-Animation dynamisch anpassen
     const logo = document.getElementById("floatingLogo");
-    logo.style.animationDuration = `${3 / this.settings.logoSpeed}s`;
+    logo.style.animation = `sway ${3 / this.settings.logoSpeed}s linear infinite alternate`;
+    
+    // CSS-Variable für Bewegungs-Radius setzen
+    document.documentElement.style.setProperty('--sway-range', `${this.settings.logoRange}px`);
   },
 
   setupEventListeners() {
@@ -46,9 +51,8 @@ const APP_STATE = {
       document.getElementById("inputNumber").value = this.settings.number;
       document.getElementById("inputUserName").value = this.settings.userName;
       document.getElementById("inputTicketTitle").value = this.settings.ticketTitle;
-      document.getElementById("inputValidFrom").value = this.settings.validFrom;
-      document.getElementById("inputValidUntil").value = this.settings.validUntil;
       document.getElementById("speedRange").value = this.settings.logoSpeed;
+      document.getElementById("rangeRange").value = this.settings.logoRange;
       modal.classList.add("active");
     });
 
@@ -57,9 +61,8 @@ const APP_STATE = {
       this.settings.number = document.getElementById("inputNumber").value;
       this.settings.userName = document.getElementById("inputUserName").value;
       this.settings.ticketTitle = document.getElementById("inputTicketTitle").value;
-      this.settings.validFrom = document.getElementById("inputValidFrom").value;
-      this.settings.validUntil = document.getElementById("inputValidUntil").value;
       this.settings.logoSpeed = document.getElementById("speedRange").value;
+      this.settings.logoRange = document.getElementById("rangeRange").value;
       
       const file = document.getElementById("qrUpload").files[0];
       if (file) {
