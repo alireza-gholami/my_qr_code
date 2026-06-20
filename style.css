@@ -8,8 +8,6 @@
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
-  --border-color: #e5e5ea;
-  --accent-color: #007aff;
 }
 
 body {
@@ -21,165 +19,47 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* App-Container für iPhone optimiert */
 .app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: env(safe-area-inset-top, 20px) 20px env(safe-area-inset-bottom, 20px) 20px;
+  padding: 10px;
 }
 
-/* Gemeinsame Text-Styles: Strikte Einheitlichkeit */
-.live-date, 
-.country-text, 
-.blinking-timer, 
-.center-number, 
-.user-name, 
-.colleague-name {
+/* Gemeinsame Text-Styles */
+.live-date, .country-text, .blinking-timer, .center-number, .user-name, .colleague-name, .ausweis-label, .ticket-title, .valid-from, .valid-until {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
   font-size: 16px !important;
   font-weight: 400 !important;
   color: #000000 !important;
 }
 
-/* Header / Top Bar */
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-}
+/* Header */
+.top-bar { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
 
-.back-btn, .menu-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-}
+/* Sektion 1 */
+.logo-row { display: grid; grid-template-columns: 80px 1fr 80px; align-items: center; padding: 0; }
+.main-logo { height: 50px; width: auto; object-fit: contain; }
+.center-number { font-size: 26px; transform: translateY(-5px); text-align: center; }
 
-.arrow-left, .ellipsis {
-  font-size: 24px;
-  color: var(--text-color);
-}
+/* Sektion 2 */
+.info-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
+.blinking-timer { font-weight: 700 !important; font-size: 20px !important; transform: translateY(-5px); animation: blink-animation 1s steps(2, start) infinite; }
 
-/* Hauptinhalt */
-.content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 15px;
-}
+/* Sektion 3 */
+.animation-row { display: flex; justify-content: center; padding: 5px 0; height: 50px; width: 100%; }
+.floating-logo { height: 40px; width: auto; animation: sway-animation 1s linear infinite alternate; }
 
-/* Sektion 1: Logo links, Nummer in der Mitte */
-.logo-row {
-  display: grid;
-  grid-template-columns: 80px 1fr 80px;
-  align-items: start;
-  padding: 5px 0 5px 0;
-}
+/* Sektion 4 */
+.qr-row { display: flex; justify-content: center; padding: 5px 0; width: 100%; }
+.qr-container { width: 100%; padding: 0; }
+.qr-image { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; }
 
-.main-logo {
-  height: 35px;
-  width: auto;
-  object-fit: contain;
-}
+/* Footer */
+.footer-names { display: flex; flex-direction: column; gap: 2px; }
+.spacer { height: 1em; }
+.ticket-title { font-size: 22px !important; font-weight: 700 !important; }
 
-.center-number {
-  text-align: center;
-}
-
-/* Linie unter Logo/Nummer */
-.divider {
-  height: 1px;
-  background-color: #cccccc;
-  margin: 2px 0;
-}
-
-/* Sektion 2: Datum, Deutschland Kollegen, Blinking Timer */
-.info-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 0;
-}
-
-.date-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.blinking-timer {
-  animation: blink-animation 1s steps(2, start) infinite;
-}
-
-/* ... */
-
-/* Sektion 3: Bewegungslogo, schwebend nach links/rechts */
-.animation-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-  height: 60px;
-  width: 100%; /* Edge to edge */
-}
-
-.floating-logo {
-  height: 25px;
-  width: auto;
-  object-fit: contain;
-  /* Langsamer: 4s statt 0.44s, ease-in-out für sanfte Beschleunigung */
-  animation: sway-animation 4s ease-in-out infinite alternate;
-}
-
-/* Sektion 4: QR-Code */
-.qr-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  width: 100%; /* Edge to edge */
-}
-
-.qr-container {
-  width: 100%; /* Edge to edge */
-  background-color: #f0f0f0;
-  border-radius: 0; /* Kein Radius für Edge-to-Edge */
-  padding: 16px;
-}
-
-.qr-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-}
-
-/* ... */
-
-
-/* Sektion 5: Benutzernamen */
-.footer-names {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 15px 0 25px 0;
-}
-
-/* --- ANIMATIONEN --- */
-@keyframes blink-animation {
-  to {
-    visibility: hidden;
-  }
-}
-
-@keyframes sway-animation {
-  0% {
-    transform: translateX(-40px);
-  }
-  100% {
-    transform: translateX(40px);
-  }
-}
+/* ANIMATIONEN */
+@keyframes blink-animation { to { visibility: hidden; } }
+@keyframes sway-animation { 0% { transform: translateX(-40vw); } 100% { transform: translateX(40vw); } }
