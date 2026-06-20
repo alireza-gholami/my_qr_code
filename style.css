@@ -16,18 +16,18 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 /* Sektion 1 */
 .logo-row { display: grid; grid-template-columns: 80px 1fr 80px; align-items: center; }
 .main-logo { height: var(--logo-height); width: auto; object-fit: contain; }
-.center-number { font-size: 26px; transform: translateY(-10px); text-align: center; }
+.center-number { font-size: 26px; text-align: center; }
+.blinking-timer { font-weight: 700 !important; font-size: 16px !important; text-align: right; animation: fade-blink 2s ease-in-out infinite; }
 
 /* Sektion 2 */
-.info-row { display: flex; justify-content: space-between; align-items: start; padding: 5px 0; }
+.info-row { display: flex; justify-content: space-between; align-items: start; padding: 15px 0; }
 .date-row { display: flex; flex-direction: row; align-items: start; gap: 30px; }
 .ticket-col { display: flex; flex-direction: column; }
 .job-text { text-align: left; }
-.blinking-timer { font-weight: 700 !important; font-size: 16px !important; animation: blink 1s steps(2, start) infinite; }
 
 /* Sektion 3 - Animation & Bounds */
-.animation-row { display: flex; justify-content: center; height: 50px; width: 100vw; margin-left: -10px; overflow: hidden; }
-.floating-logo { height: 40px; width: auto; animation: sway 2s linear infinite alternate; }
+.animation-row { display: flex; justify-content: center; height: 50px; width: 100vw; margin-left: -10px; overflow: hidden; padding-top: 20px; } /* Weiter runter von Job */
+.floating-logo { height: 40px; width: auto; animation: sway 2s ease-in-out infinite alternate; }
 
 /* Sektion 4 */
 .qr-row { display: flex; justify-content: center; padding: 5px 0; width: 100vw; margin-left: -10px; }
@@ -44,7 +44,11 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 .footer-image { width: 100%; height: auto; display: block; }
 
 /* ANIMATIONEN */
-@keyframes blink { to { visibility: hidden; } }
+@keyframes fade-blink { 
+  0% { opacity: 0; } 
+  50% { opacity: 1; } 
+  100% { opacity: 0; } 
+}
 @keyframes sway { 
   0% { transform: translateX(calc(-1 * var(--sway-range))); } 
   100% { transform: translateX(var(--sway-range)); } 
