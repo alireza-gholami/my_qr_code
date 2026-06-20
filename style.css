@@ -14,13 +14,14 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 
 /* Sektion 1 */
 .logo-row { display: grid; grid-template-columns: 80px 1fr 80px; align-items: center; }
-.main-logo { height: 56px; width: auto; object-fit: contain; } /* 40px + 40% = 56px */
+.main-logo { height: 36px; width: auto; object-fit: contain; } /* 40px * 0.9 = 36px */
 .center-number { font-size: 26px; transform: translateY(-10px); text-align: center; }
 
 /* Sektion 2 */
 .info-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
-.date-row { display: flex; flex-direction: row; gap: 8px; }
-.job-text { text-align: left; }
+.date-row { display: flex; flex-direction: column; gap: 4px; }
+.ticket-info { margin-left: 20px; } /* ~3 chars shift */
+.job-text { margin-left: 20px; text-align: left; }
 .blinking-timer { font-weight: 700 !important; font-size: 16px !important; animation: blink 1s steps(2, start) infinite; }
 
 /* Sektion 3 - Animation & Bounds */
