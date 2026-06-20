@@ -2,7 +2,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --bg-color: #ffffff; --text-color: #000000; --sway-range: 130px; --qr-size: 255px; --logo-height: 40px; }
 body { background: #fff; color: #000; font-family: -apple-system, sans-serif; overflow-x: hidden; }
-.app-container { display: flex; flex-direction: column; min-height: 100vh; padding: 10px; padding-bottom: 70px; }
+.app-container { display: flex; flex-direction: column; min-height: 100vh; padding: 50px 10px 70px 10px; }
 
 /* Text Einheitlichkeit */
 .live-date, .blinking-timer, .center-number, .user-name, .ausweis-label, .ticket-title, .valid-from, .valid-until, .ticket-text, .job-text, .ticket-title-inline {
