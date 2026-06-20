@@ -5,7 +5,7 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 .app-container { display: flex; flex-direction: column; min-height: 100vh; padding: 10px; padding-bottom: 70px; }
 
 /* Text Einheitlichkeit */
-.live-date, .blinking-timer, .center-number, .user-name, .ausweis-label, .ticket-title, .valid-from, .valid-until, .ticket-text, .job-text {
+.live-date, .blinking-timer, .center-number, .user-name, .ausweis-label, .ticket-title, .valid-from, .valid-until, .ticket-text, .job-text, .ticket-title-inline {
   font-family: -apple-system, sans-serif !important; font-size: 16px !important; font-weight: 400 !important; color: #000000 !important;
 }
 
@@ -20,9 +20,8 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 
 /* Sektion 2 */
 .info-row { display: flex; justify-content: space-between; align-items: start; padding: 5px 0; }
-.date-row { display: flex; flex-direction: row; align-items: start; gap: 30px; } /* Horizontal alignment */
-.ticket-col { display: flex; flex-direction: column; } /* Vertical alignment for Job */
-.ticket-text { display: block; }
+.date-row { display: flex; flex-direction: row; align-items: start; gap: 30px; }
+.ticket-col { display: flex; flex-direction: column; }
 .job-text { text-align: left; }
 .blinking-timer { font-weight: 700 !important; font-size: 16px !important; animation: blink 1s steps(2, start) infinite; }
 
@@ -36,8 +35,9 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 .qr-image { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; }
 
 /* Footer */
-.footer-names { display: flex; flex-direction: column; gap: 2px; }
-.ticket-title { font-size: 20px !important; font-weight: 700 !important; }
+.footer-names { display: flex; flex-direction: column; gap: 8px; }
+.ticket-title-inline { font-size: 20px !important; font-weight: 700 !important; margin: 4px 0; }
+.validity-row { display: flex; flex-direction: column; gap: 4px; }
 
 /* Static Footer Image */
 .static-footer { position: fixed; bottom: 0; left: 0; width: 100%; }
