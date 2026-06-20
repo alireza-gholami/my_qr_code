@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app-container">
+  <div class="app-container" style="padding-top: 30px;">
     <header class="top-bar">
       <div class="back-btn" id="backBtn">&#10094;</div>
       <div class="menu-btn" id="menuBtn">&#8230;</div>
@@ -24,9 +24,16 @@
       </section>
 
       <section class="info-row">
-        <span class="live-date" id="displayDate">01.01.2026 07:05</span>
+        <div class="info-left">
+          <div class="date-row">
+            <span class="live-date" id="displayDate">01.01.2026 07:05</span>
+            <span class="ticket-info">Deutschland Ticket</span>
+          </div>
+          <div class="job-text">Job</div>
+        </div>
         <span class="blinking-timer" id="timer">2:00</span>
       </section>
+
 
       <section class="animation-row">
         <img src="data/bewegungslogo.png" alt="Bewegungslogo" class="floating-logo" id="floatingLogo">
