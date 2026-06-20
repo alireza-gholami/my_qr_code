@@ -29,12 +29,17 @@ body {
   padding: env(safe-area-inset-top, 20px) 20px env(safe-area-inset-bottom, 20px) 20px;
 }
 
-/* Gemeinsame Text-Styles */
-.live-date, .country-text, .blinking-timer, .center-number, .user-name, .colleague-name {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--text-color);
+/* Gemeinsame Text-Styles: Strikte Einheitlichkeit */
+.live-date, 
+.country-text, 
+.blinking-timer, 
+.center-number, 
+.user-name, 
+.colleague-name {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #000000 !important;
 }
 
 /* Header / Top Bar */
@@ -76,13 +81,12 @@ body {
 }
 
 .main-logo {
-  height: 35px; /* Kleiner */
+  height: 35px;
   width: auto;
   object-fit: contain;
 }
 
 .center-number {
-  font-size: 26px; /* Beibehaltung der Größe, aber 400 */
   text-align: center;
 }
 
@@ -121,10 +125,10 @@ body {
 }
 
 .floating-logo {
-  height: 25px; /* Noch kleiner */
+  height: 25px;
   width: auto;
   object-fit: contain;
-  animation: sway-animation 0.44s linear infinite alternate; /* 3x schneller als 1.33s */
+  animation: sway-animation 0.44s linear infinite alternate;
 }
 
 /* Sektion 4: QR-Code */
