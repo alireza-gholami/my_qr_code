@@ -1,6 +1,14 @@
 // Zentrale State-Verwaltung
 const APP_STATE = {
-  settings: { number: "65432", qrCodeData: null, logoSpeed: 2 },
+  settings: { 
+    number: "65432", 
+    userName: "Max Mustermann", 
+    ticketTitle: "Deutschland Ticket Job",
+    validFrom: "01.06.2026 00:00",
+    validUntil: "01.06.2026 03:00",
+    qrCodeData: null, 
+    logoSpeed: 2 
+  },
   STORAGE_KEY: "HNV_PWA_STATE",
 
   init() {
@@ -20,10 +28,14 @@ const APP_STATE = {
 
   updateUI() {
     document.getElementById("displayNumber").textContent = this.settings.number;
+    document.getElementById("displayUserName").textContent = this.settings.userName;
+    document.getElementById("displayTicketTitle").textContent = this.settings.ticketTitle;
+    document.getElementById("validFrom").textContent = "Gültig von: " + this.settings.validFrom;
+    document.getElementById("validUntil").textContent = "Gültig bis: " + this.settings.validUntil;
+    
     const qrImg = document.getElementById("displayQR");
     if (this.settings.qrCodeData) qrImg.src = this.settings.qrCodeData;
     
-    // Geschwindigkeit auf Logo anwenden
     const logo = document.getElementById("floatingLogo");
     logo.style.animationDuration = `${3 / this.settings.logoSpeed}s`;
   },
@@ -32,6 +44,10 @@ const APP_STATE = {
     const modal = document.getElementById("settingsModal");
     document.getElementById("menuBtn").addEventListener("click", () => {
       document.getElementById("inputNumber").value = this.settings.number;
+      document.getElementById("inputUserName").value = this.settings.userName;
+      document.getElementById("inputTicketTitle").value = this.settings.ticketTitle;
+      document.getElementById("inputValidFrom").value = this.settings.validFrom;
+      document.getElementById("inputValidUntil").value = this.settings.validUntil;
       document.getElementById("speedRange").value = this.settings.logoSpeed;
       modal.classList.add("active");
     });
@@ -39,6 +55,10 @@ const APP_STATE = {
     document.getElementById("settingsForm").addEventListener("submit", (e) => {
       e.preventDefault();
       this.settings.number = document.getElementById("inputNumber").value;
+      this.settings.userName = document.getElementById("inputUserName").value;
+      this.settings.ticketTitle = document.getElementById("inputTicketTitle").value;
+      this.settings.validFrom = document.getElementById("inputValidFrom").value;
+      this.settings.validUntil = document.getElementById("inputValidUntil").value;
       this.settings.logoSpeed = document.getElementById("speedRange").value;
       
       const file = document.getElementById("qrUpload").files[0];
