@@ -19,11 +19,11 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 .center-number { font-size: 26px; transform: translateY(-10px); text-align: center; }
 
 /* Sektion 2 */
-.info-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
-.date-col { display: flex; flex-direction: column; gap: 4px; }
-.ticket-info { margin-left: 20px; } /* 3 chars shift */
-.job-text { margin-left: 20px; text-align: left; }
-.blinking-timer { font-weight: 700 !important; font-size: 16px !important; transform: translateY(-5px); animation: blink 1s steps(2, start) infinite; }
+.info-row { display: flex; justify-content: space-between; align-items: start; padding: 5px 0; }
+.date-row { display: flex; flex-direction: row; align-items: start; }
+.ticket-col { display: flex; flex-direction: column; margin-left: 30px; } /* ~5 chars shift */
+.job-text { text-align: left; }
+.blinking-timer { font-weight: 700 !important; font-size: 16px !important; animation: blink 1s steps(2, start) infinite; }
 
 /* Sektion 3 - Animation & Bounds */
 .animation-row { display: flex; justify-content: center; height: 50px; width: 100vw; margin-left: -10px; overflow: hidden; }
