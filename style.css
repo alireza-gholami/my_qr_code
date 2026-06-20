@@ -1,54 +1,30 @@
 /* Reset und Basis-Styling */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 10px;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg-color: #ffffff; --text-color: #000000; --accent-color: #007aff; }
+body { background-color: var(--bg-color); color: var(--text-color); font-family: -apple-system, sans-serif; overflow-x: hidden; }
+.app-container { display: flex; flex-direction: column; min-height: 100vh; padding: 10px; }
 
 /* Gemeinsame Text-Styles */
 .live-date, .country-text, .blinking-timer, .center-number, .user-name, .colleague-name, .ausweis-label, .ticket-title, .valid-from, .valid-until {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: #000000 !important;
+  font-family: -apple-system, sans-serif !important; font-size: 16px !important; font-weight: 400 !important; color: #000000 !important;
 }
 
 /* Header */
-.top-bar { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
+.top-bar { display: flex; justify-content: flex-end; align-items: center; padding: 5px 0; }
+.menu-btn { cursor: pointer; font-size: 24px; }
 
 /* Sektion 1 */
 .logo-row { display: grid; grid-template-columns: 80px 1fr 80px; align-items: center; padding: 0; }
-.main-logo { height: 50px; width: auto; object-fit: contain; }
-.center-number { font-size: 26px; transform: translateY(-5px); text-align: center; }
+.main-logo { height: 60px; width: auto; object-fit: contain; }
+.center-number { font-size: 26px; transform: translateY(-10px); text-align: center; }
 
 /* Sektion 2 */
 .info-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
 .blinking-timer { font-weight: 700 !important; font-size: 20px !important; transform: translateY(-5px); animation: blink-animation 1s steps(2, start) infinite; }
 
 /* Sektion 3 */
-.animation-row { display: flex; justify-content: center; padding: 5px 0; height: 50px; width: 100%; }
-.floating-logo { height: 40px; width: auto; animation: sway-animation 1s linear infinite alternate; }
+.animation-row { display: flex; justify-content: center; padding: 5px 0; height: 50px; width: 100%; overflow: hidden; }
+.floating-logo { height: 40px; width: auto; animation: sway-animation 2s linear infinite alternate; }
 
 /* Sektion 4 */
 .qr-row { display: flex; justify-content: center; padding: 5px 0; width: 100%; }
@@ -57,9 +33,16 @@ body {
 
 /* Footer */
 .footer-names { display: flex; flex-direction: column; gap: 2px; }
-.spacer { height: 1em; }
 .ticket-title { font-size: 22px !important; font-weight: 700 !important; }
+.validity-row { display: flex; flex-direction: column; }
 
 /* ANIMATIONEN */
 @keyframes blink-animation { to { visibility: hidden; } }
-@keyframes sway-animation { 0% { transform: translateX(-40vw); } 100% { transform: translateX(40vw); } }
+@keyframes sway-animation { 0% { transform: translateX(-30vw); } 100% { transform: translateX(30vw); } }
+
+/* MODAL */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: flex-end; z-index: 1000; }
+.modal-overlay.active { display: flex; }
+.modal-content { background: #fff; width: 100%; border-radius: 20px 20px 0 0; padding: 20px; }
+.form-group { margin-bottom: 15px; }
+.btn-primary { width: 100%; padding: 10px; background: var(--accent-color); color: #fff; border: none; border-radius: 5px; }

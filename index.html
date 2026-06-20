@@ -32,6 +32,15 @@
       </div>
     </header>
 
+    <header class="top-bar">
+      <div class="back-btn" id="backBtn">
+        <span class="arrow-left">&#10094;</span>
+      </div>
+      <div class="menu-btn" id="menuBtn">
+        <span class="ellipsis">&#8230;</span>
+      </div>
+    </header>
+
     <!-- Main Content Area -->
     <main class="content">
       
@@ -43,13 +52,11 @@
         <div class="logo-row-spacer"></div>
       </section>
 
-      <!-- Linie (divider) entfernt -->
-
       <section class="info-row">
         <div class="date-row">
           <span class="live-date" id="displayDate">01.01.2026 07:05</span>
         </div>
-        <div class="blinking-timer">2:00</div>
+        <div class="blinking-timer" id="timer">2:00</div>
       </section>
 
       <section class="animation-row">
@@ -70,11 +77,34 @@
         <div class="spacer"></div>
         <div class="ticket-title">Deutschland Ticket Job</div>
         <div class="validity-row">
-          <span class="valid-from" id="validFrom">Gültig von: 01.06.2026 00:00</span>
-          <span class="valid-until" id="validUntil">Gültig bis: 01.06.2026 03:00</span>
+          <div class="valid-from" id="validFrom">Gültig von: 01.06.2026 00:00</div>
+          <div class="valid-until" id="validUntil">Gültig bis: 01.06.2026 03:00</div>
         </div>
       </footer>
     </main>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Einstellungen</h3>
+          <span class="close-modal" id="closeModalBtn">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="settingsForm">
+            <div class="form-group">
+              <label for="qrUpload">QR-Code ersetzen (JPG)</label>
+              <input type="file" id="qrUpload" accept="image/jpeg, image/jpg">
+            </div>
+            <div class="form-group">
+              <label for="inputNumber">Nummer</label>
+              <input type="text" id="inputNumber">
+            </div>
+            <button type="submit" class="btn btn-primary">Speichern</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
 
   </div>
