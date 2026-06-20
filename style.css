@@ -26,7 +26,7 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 .job-text { text-align: left; }
 
 /* Sektion 3 - Animation & Bounds */
-.animation-row { display: flex; justify-content: center; height: 50px; width: 100vw; margin-left: -10px; overflow: hidden; padding-top: 20px; } /* Weiter runter von Job */
+.animation-row { display: flex; justify-content: center; height: 50px; width: 100vw; margin-left: -10px; overflow: hidden; padding-top: 10px; } /* Weiter runter von Job */
 .floating-logo { height: 40px; width: auto; animation: sway 2s ease-in-out infinite alternate; }
 
 /* Sektion 4 */
