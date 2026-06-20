@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>HNV Authentifizierung</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -39,7 +41,7 @@
       <footer class="footer-names">
         <div class="user-name" id="displayUserName">Max Mustermann</div>
         <div class="ausweis-label">Ausweis: Lichtbildausweis</div>
-        <div class="spacer"></div>
+        <div class="spacer" style="height: 0.5em;"></div>
         <div class="ticket-title" id="displayTicketTitle">Deutschland Ticket Job</div>
         <div class="validity-row">
           <div class="valid-from" id="validFrom">Gültig von: 01.06.2026 00:00</div>
@@ -48,18 +50,15 @@
       </footer>
     </main>
 
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-      <div class="nav-item">Karte</div>
-      <div class="nav-item">Tickets</div>
-      <div class="nav-item">Mitteilungen</div>
-      <div class="nav-item">Profil</div>
-    </nav>
+    <footer class="static-footer">
+      <img src="data/unten.jpeg" alt="Footer Menu" class="footer-image">
+    </footer>
 
     <div class="modal-overlay" id="settingsModal">
       <div class="modal-content">
         <h3>Einstellungen</h3>
         <form id="settingsForm">
+          <label>QR-Code (JPG):</label>
           <input type="file" id="qrUpload" accept="image/jpeg, image/jpg">
           <input type="text" id="inputNumber" placeholder="Nummer">
           <input type="text" id="inputUserName" placeholder="Name">
