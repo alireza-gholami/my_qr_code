@@ -20,8 +20,9 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 
 /* Sektion 2 */
 .info-row { display: flex; justify-content: space-between; align-items: start; padding: 5px 0; }
-.date-row { display: flex; flex-direction: row; align-items: start; }
-.ticket-col { display: flex; flex-direction: column; margin-left: 30px; } /* ~5 chars shift */
+.date-row { display: flex; flex-direction: row; align-items: start; gap: 30px; } /* Horizontal alignment */
+.ticket-col { display: flex; flex-direction: column; } /* Vertical alignment for Job */
+.ticket-text { display: block; }
 .job-text { text-align: left; }
 .blinking-timer { font-weight: 700 !important; font-size: 16px !important; animation: blink 1s steps(2, start) infinite; }
 
