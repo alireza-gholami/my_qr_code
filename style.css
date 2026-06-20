@@ -36,7 +36,7 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 
 /* Footer */
 .footer-names { display: flex; flex-direction: column; gap: 8px; }
-.ticket-title-inline { font-size: 20px !important; font-weight: 700 !important; margin: 4px 0; }
+.ticket-title-inline { font-size: 22px !important; font-weight: 700 !important; margin: 4px 0; }
 .validity-row { display: flex; flex-direction: column; gap: 4px; }
 
 /* Static Footer Image */
