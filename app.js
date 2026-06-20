@@ -1,187 +1,65 @@
-// Zentrale State-Verwaltung für hohe Erweiterbarkeit
+// Zentrale State-Verwaltung
 const APP_STATE = {
-  // Standardeinstellungen
-  settings: {
-    number: "65432",
-    userName: "Max Mustermann",
-    colleagueName: "Sabine Musterfrau",
-    qrCodeData: null // Base64-String des hochgeladenen QR-Codes (JPG)
-  },
-
-  // Schlüssel für LocalStorage
+  settings: { number: "65432", qrCodeData: null, logoSpeed: 2 },
   STORAGE_KEY: "HNV_PWA_STATE",
 
-  // Initialisierung der App-Daten
   init() {
     this.loadFromStorage();
     this.updateUI();
-    this.startLiveClock();
     this.setupEventListeners();
-    this.registerServiceWorker();
   },
 
-  // Daten aus dem LocalStorage laden
   loadFromStorage() {
-    try {
-      const stored = localStorage.getItem(this.STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        // Zusammenführen, um Abwärtskompatibilität bei Erweiterungen sicherzustellen
-        this.settings = { ...this.settings, ...parsed };
-      }
-    } catch (e) {
-      console.error("Fehler beim Laden aus LocalStorage", e);
-    }
+    const stored = localStorage.getItem(this.STORAGE_KEY);
+    if (stored) this.settings = { ...this.settings, ...JSON.parse(stored) };
   },
 
-  // Daten im LocalStorage speichern
   saveToStorage() {
-    try {
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.settings));
-    } catch (e) {
-      console.error("Fehler beim Speichern in LocalStorage", e);
-    }
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.settings));
   },
 
-  // Die UI mit den aktuellen Daten befüllen
   updateUI() {
     document.getElementById("displayNumber").textContent = this.settings.number;
-    document.getElementById("displayUserName").textContent = this.settings.userName;
-    document.getElementById("displayColleagueName").textContent = this.settings.colleagueName;
-
-    // QR-Code aktualisieren (entweder der hochgeladene oder das Standard-Bild)
-    const qrImgElement = document.getElementById("displayQR");
-    if (this.settings.qrCodeData) {
-      qrImgElement.src = this.settings.qrCodeData;
-    } else {
-      qrImgElement.src = "data/QR_deWP.svg.png";
-    }
-  },
-
-  // Startet die sekundengenaue Live-Uhr im Format "01.01.2026 07:05"
-  startLiveClock() {
-    const clockElement = document.getElementById("displayDate");
+    const qrImg = document.getElementById("displayQR");
+    if (this.settings.qrCodeData) qrImg.src = this.settings.qrCodeData;
     
-    const updateClock = () => {
-      const now = new Date();
-      const day = String(now.getDate()).padStart(2, '0');
-      const month = String(now.getMonth() + 1).padStart(2, '0');
-      const year = now.getFullYear();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      
-      clockElement.textContent = `${day}.${month}.${year} ${hours}:${minutes}`;
-    };
-
-    updateClock(); // Sofort einmal ausführen
-    setInterval(updateClock, 1000); // Jede Sekunde aktualisieren
+    // Geschwindigkeit auf Logo anwenden
+    const logo = document.getElementById("floatingLogo");
+    logo.style.animationDuration = `${3 / this.settings.logoSpeed}s`;
   },
 
-  // Event Listener einrichten
   setupEventListeners() {
     const modal = document.getElementById("settingsModal");
-    const menuBtn = document.getElementById("menuBtn");
-    const closeBtn = document.getElementById("closeModalBtn");
-    const cancelBtn = document.getElementById("cancelBtn");
-    const settingsForm = document.getElementById("settingsForm");
-    const qrUploadInput = document.getElementById("qrUpload");
-    const fileStatus = document.getElementById("fileStatus");
-    const backBtn = document.getElementById("backBtn");
-
-    // Modal öffnen
-    menuBtn.addEventListener("click", () => {
-      // Inputs mit aktuellen Werten füllen
+    document.getElementById("menuBtn").addEventListener("click", () => {
       document.getElementById("inputNumber").value = this.settings.number;
-      document.getElementById("inputUserName").value = this.settings.userName;
-      document.getElementById("inputColleagueName").value = this.settings.colleagueName;
-      fileStatus.textContent = this.settings.qrCodeData ? "Aktueller QR-Code ist gespeichert" : "Keine neue Datei ausgewählt";
-      
+      document.getElementById("speedRange").value = this.settings.logoSpeed;
       modal.classList.add("active");
     });
 
-    // Modal schließen (Hilfsfunktion)
-    const closeModal = () => {
-      modal.classList.remove("active");
-      settingsForm.reset();
-    };
-
-    closeBtn.addEventListener("click", closeModal);
-    cancelBtn.addEventListener("click", closeModal);
-
-    // Schließen bei Klick außerhalb des Modals
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-
-    // Dateiupload-Handler (nur JPG/JPEG erlauben)
-    let tempQrData = null;
-    qrUploadInput.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        if (file.type === "image/jpeg" || file.type === "image/jpg") {
-          const reader = new FileReader();
-          reader.onload = (event) => {
-            tempQrData = event.target.result;
-            fileStatus.textContent = `Erfolgreich geladen: ${file.name}`;
-            fileStatus.style.color = "#30d158"; // iOS Grün
-          };
-          reader.readAsDataURL(file);
-        } else {
-          fileStatus.textContent = "Fehler: Nur JPG/JPEG-Dateien sind erlaubt!";
-          fileStatus.style.color = "#ff453a"; // iOS Rot
-          qrUploadInput.value = ""; // Input zurücksetzen
-          tempQrData = null;
-        }
-      }
-    });
-
-    // Formular abschicken / Einstellungen speichern
-    settingsForm.addEventListener("submit", (e) => {
+    document.getElementById("settingsForm").addEventListener("submit", (e) => {
       e.preventDefault();
-
-      // Werte auslesen und im State speichern
-      this.settings.number = document.getElementById("inputNumber").value.trim() || this.settings.number;
-      this.settings.userName = document.getElementById("inputUserName").value.trim() || this.settings.userName;
-      this.settings.colleagueName = document.getElementById("inputColleagueName").value.trim() || this.settings.colleagueName;
+      this.settings.number = document.getElementById("inputNumber").value;
+      this.settings.logoSpeed = document.getElementById("speedRange").value;
       
-      if (tempQrData) {
-        this.settings.qrCodeData = tempQrData;
-        tempQrData = null;
-      }
-
-      this.saveToStorage();
-      this.updateUI();
-      closeModal();
-    });
-
-    // Zurück-Button Logik (Pfeil nach links)
-    backBtn.addEventListener("click", () => {
-      // Wenn es Verlauf gibt, gehen wir zurück, ansonsten dezent visualisieren
-      if (window.history.length > 1) {
-        window.history.back();
+      const file = document.getElementById("qrUpload").files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          this.settings.qrCodeData = event.target.result;
+          this.saveAndApply();
+        };
+        reader.readAsDataURL(file);
       } else {
-        // Optionale visuelle Rückmeldung (Pfeil blinkt kurz auf)
-        backBtn.style.opacity = "0.5";
-        setTimeout(() => backBtn.style.opacity = "1", 200);
+        this.saveAndApply();
       }
     });
   },
 
-  // Service Worker für Offline-Nutzung registrieren
-  registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-          .then(reg => console.log('Service Worker erfolgreich registriert', reg.scope))
-          .catch(err => console.error('Service Worker Registrierung fehlgeschlagen', err));
-      });
-    }
+  saveAndApply() {
+    this.saveToStorage();
+    this.updateUI();
+    document.getElementById("settingsModal").classList.remove("active");
   }
 };
 
-// Start der App bei Seitenaufbau
-document.addEventListener("DOMContentLoaded", () => {
-  APP_STATE.init();
-});
+document.addEventListener("DOMContentLoaded", () => APP_STATE.init());
