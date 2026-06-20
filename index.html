@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app-container" style="padding-top: 30px;">
+  <div class="app-container">
     <header class="top-bar">
       <div class="back-btn" id="backBtn">&#10094;</div>
       <div class="menu-btn" id="menuBtn">&#8230;</div>
@@ -24,16 +24,15 @@
       </section>
 
       <section class="info-row">
-        <div class="info-left">
-          <div class="date-row">
-            <span class="live-date" id="displayDate">01.01.2026 07:05</span>
-            <span class="ticket-info">Deutschland Ticket</span>
+        <div class="date-col">
+          <span class="live-date" id="displayDate">01.01.2026 07:05</span>
+          <div class="ticket-info">
+            <span class="ticket-text" id="displayTicketTitle">Deutschland Ticket</span><br>
+            <span class="job-text">Job</span>
           </div>
-          <div class="job-text">Job</div>
         </div>
         <span class="blinking-timer" id="timer">2:00</span>
       </section>
-
 
       <section class="animation-row">
         <img src="data/bewegungslogo.png" alt="Bewegungslogo" class="floating-logo" id="floatingLogo">
@@ -49,7 +48,6 @@
         <div class="user-name" id="displayUserName">Max Mustermann</div>
         <div class="ausweis-label">Ausweis: Lichtbildausweis</div>
         <div class="spacer" style="height: 0.5em;"></div>
-        <div class="ticket-title" id="displayTicketTitle">Deutschland Ticket Job</div>
         <div class="validity-row">
           <div class="valid-from" id="validFrom">Gültig von: 01.06.2026 00:00</div>
           <div class="valid-until" id="validUntil">Gültig bis: 01.06.2026 03:00</div>
@@ -76,6 +74,8 @@
           <input type="range" id="rangeRange" min="10" max="150" step="5" value="130">
           <label>QR Code Größe:</label>
           <input type="range" id="qrRange" min="100" max="400" step="10" value="255">
+          <label>Logo Größe:</label>
+          <input type="range" id="logoRange" min="20" max="100" step="5" value="40">
           <button type="submit">Speichern</button>
         </form>
       </div>

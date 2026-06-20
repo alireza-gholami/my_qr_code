@@ -3,13 +3,14 @@ const APP_STATE = {
   settings: { 
     number: "65432", 
     userName: "Max Mustermann", 
-    ticketTitle: "Deutschland Ticket Job",
+    ticketTitle: "Deutschland Ticket",
     validFrom: "01.06.2026 00:00",
     validUntil: "01.06.2026 03:00",
     qrCodeData: null, 
     logoSpeed: 2,
     logoRange: 130,
-    qrSize: 255
+    qrSize: 255,
+    logoSize: 40
   },
   STORAGE_KEY: "HNV_PWA_STATE",
 
@@ -43,6 +44,7 @@ const APP_STATE = {
     
     document.documentElement.style.setProperty('--sway-range', `${this.settings.logoRange}px`);
     document.documentElement.style.setProperty('--qr-size', `${this.settings.qrSize}px`);
+    document.documentElement.style.setProperty('--logo-height', `${this.settings.logoSize}px`);
   },
 
   setupEventListeners() {
@@ -54,6 +56,7 @@ const APP_STATE = {
       document.getElementById("speedRange").value = this.settings.logoSpeed;
       document.getElementById("rangeRange").value = this.settings.logoRange;
       document.getElementById("qrRange").value = this.settings.qrSize;
+      document.getElementById("logoRange").value = this.settings.logoSize;
       modal.classList.add("active");
     });
 
@@ -65,6 +68,7 @@ const APP_STATE = {
       this.settings.logoSpeed = document.getElementById("speedRange").value;
       this.settings.logoRange = document.getElementById("rangeRange").value;
       this.settings.qrSize = document.getElementById("qrRange").value;
+      this.settings.logoSize = document.getElementById("logoRange").value;
       
       const file = document.getElementById("qrUpload").files[0];
       if (file) {
