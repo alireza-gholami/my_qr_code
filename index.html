@@ -35,100 +35,44 @@
     <!-- Main Content Area -->
     <main class="content">
       
-      <!-- Erste Sektion: Logo und Nummer -->
       <section class="logo-row">
         <div class="logo-wrapper">
           <img src="data/logo.svg" alt="HNV Logo" class="main-logo" id="mainLogoImg">
         </div>
-        <div class="center-number" id="displayNumber">00000</div>
-        <!-- Platzhalter zum Ausrichten, falls nötig -->
+        <div class="center-number" id="displayNumber">65432</div>
         <div class="logo-row-spacer"></div>
       </section>
 
-      <!-- Linie darunter -->
       <div class="divider"></div>
 
-      <!-- Zweite Sektion: Datum, Deutschland Kollegen, Blinking Timer -->
       <section class="info-row">
-        <div class="left-info">
-          <div class="date-row">
-            <span class="live-date" id="displayDate">01.01.2026 07:05</span>
-            <span class="country-text">Deutschland Kollegen</span>
-          </div>
+        <div class="date-row">
+          <span class="live-date" id="displayDate">01.01.2026 07:05</span>
+          <span class="country-text">Deutschland Kollegen</span>
         </div>
-        <div class="right-info">
-          <div class="blinking-timer">2:00</div>
-        </div>
+        <div class="blinking-timer">2:00</div>
       </section>
 
-      <!-- Dritte Sektion: Bewegungslogo, schwebend nach links/rechts -->
       <section class="animation-row">
         <div class="floating-logo-container">
           <img src="data/bewegungslogo.png" alt="Bewegungslogo" class="floating-logo">
         </div>
       </section>
 
-      <!-- Vierte Sektion: QR-Code ganzseitig / groß -->
       <section class="qr-row">
         <div class="qr-container">
           <img src="data/QR_deWP.svg.png" alt="QR Code" class="qr-image" id="displayQR">
         </div>
       </section>
 
-      <!-- Fünfte Sektion: Benutzernamen -->
       <footer class="footer-names">
         <div class="user-name" id="displayUserName">Max Mustermann</div>
         <div class="colleague-name" id="displayColleagueName">Kollege Name</div>
+        <!-- Neuer Textbereich als Ersatz für Einstellungen -->
+        <div class="footer-note" id="footerNote">Hier steht der zusätzliche Text.</div>
       </footer>
-
     </main>
 
-    <!-- Settings Modal (Einstellungsmenü) -->
-    <div class="modal-overlay" id="settingsModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>Einstellungen</h3>
-          <span class="close-modal" id="closeModalBtn">&times;</span>
-        </div>
-        
-        <div class="modal-body">
-          <form id="settingsForm">
-            <!-- QR-Code Upload -->
-            <div class="form-group">
-              <label for="qrUpload" class="custom-file-upload">
-                <span>QR-Code hochladen (JPG/JPEG)</span>
-                <input type="file" id="qrUpload" accept="image/jpeg, image/jpg">
-              </label>
-              <div id="fileStatus" class="file-status">Keine Datei ausgewählt</div>
-            </div>
-
-            <!-- Nummer in der Mitte -->
-            <div class="form-group">
-              <label for="inputNumber">Nummer (Mitte)</label>
-              <input type="text" id="inputNumber" placeholder="Z.B. 12345">
-            </div>
-
-            <!-- Mein Name -->
-            <div class="form-group">
-              <label for="inputUserName">Mein Name</label>
-              <input type="text" id="inputUserName" placeholder="Dein Name">
-            </div>
-
-            <!-- Kollegen Name -->
-            <div class="form-group">
-              <label for="inputColleagueName">Kollegen Name</label>
-              <input type="text" id="inputColleagueName" placeholder="Kollegen Name">
-            </div>
-
-            <!-- Button-Group für zukünftige Erweiterungen leicht anpassbar -->
-            <div class="form-actions">
-              <button type="button" class="btn btn-secondary" id="cancelBtn">Abbrechen</button>
-              <button type="submit" class="btn btn-primary">Speichern</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
 
   </div>
 

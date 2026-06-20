@@ -115,6 +115,8 @@ body {
   animation: blink-animation 1s steps(2, start) infinite;
 }
 
+/* ... */
+
 /* Sektion 3: Bewegungslogo, schwebend nach links/rechts */
 .animation-row {
   display: flex;
@@ -122,13 +124,15 @@ body {
   align-items: center;
   padding: 10px 0;
   height: 60px;
+  width: 100%; /* Edge to edge */
 }
 
 .floating-logo {
   height: 25px;
   width: auto;
   object-fit: contain;
-  animation: sway-animation 0.44s linear infinite alternate;
+  /* Langsamer: 4s statt 0.44s, ease-in-out für sanfte Beschleunigung */
+  animation: sway-animation 4s ease-in-out infinite alternate;
 }
 
 /* Sektion 4: QR-Code */
@@ -137,13 +141,13 @@ body {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  width: 100%; /* Edge to edge */
 }
 
 .qr-container {
-  width: 100%;
-  max-width: 320px;
+  width: 100%; /* Edge to edge */
   background-color: #f0f0f0;
-  border-radius: 18px;
+  border-radius: 0; /* Kein Radius für Edge-to-Edge */
   padding: 16px;
 }
 
@@ -152,6 +156,9 @@ body {
   aspect-ratio: 1 / 1;
   object-fit: contain;
 }
+
+/* ... */
+
 
 /* Sektion 5: Benutzernamen */
 .footer-names {
