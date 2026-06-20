@@ -6,12 +6,12 @@
 }
 
 :root {
-  --bg-color: #000000;
-  --text-color: #ffffff;
-  --text-secondary: #8e8e93;
-  --border-color: #2c2c2e;
-  --accent-color: #0a84ff;
-  --modal-bg: #1c1c1e;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --text-secondary: #5a5a5a;
+  --border-color: #e5e5ea;
+  --accent-color: #007aff;
+  --modal-bg: #f2f2f7;
 }
 
 body {
@@ -37,7 +37,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid transparent; /* Kann bei Bedarf angepasst werden */
+  border-bottom: 1px solid transparent;
 }
 
 .back-btn, .menu-btn {
@@ -69,16 +69,16 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  justify-content: space-between; /* Verteilt Elemente gleichmäßig */
+  justify-content: space-between;
   gap: 15px;
 }
 
-/* Sektion 1: Logo links, Nummer in der Mitte */
+/* Sektion 1: Logo links, Nummer in der Mitte (angepasst: Nummer weiter nach oben) */
 .logo-row {
   display: grid;
-  grid-template-columns: 80px 1fr 80px; /* Perfekte Zentrierung der Nummer */
-  align-items: center;
-  padding: 10px 0 5px 0;
+  grid-template-columns: 80px 1fr 80px;
+  align-items: start; /* Nach oben ausgerichtet */
+  padding: 5px 0 5px 0;
 }
 
 .logo-wrapper {
@@ -95,27 +95,27 @@ body {
 
 .center-number {
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 400; /* Nicht fett */
   text-align: center;
   letter-spacing: 1px;
 }
 
 .logo-row-spacer {
-  width: 80px; /* Gleicht die Logo-Spalte aus */
+  width: 80px;
 }
 
 /* Linie unter Logo/Nummer */
 .divider {
   height: 1px;
-  background-color: #333333; /* Dezente Trennlinie */
+  background-color: #cccccc;
   margin: 2px 0;
 }
 
-/* Sektion 2: Datum, Deutschland Kollegen, blinkender Timer */
+/* Sektion 2: Datum, Deutschland Kollegen (angepasst: rechtsbündig, nicht fett) */
 .info-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   padding: 5px 0;
 }
 
@@ -128,12 +128,13 @@ body {
 .live-date {
   font-size: 15px;
   font-weight: 400;
-  color: #eeeeee;
+  color: var(--text-color);
 }
 
 .country-text {
   font-size: 19px;
-  font-weight: 700;
+  font-weight: 400; /* Nicht fett */
+  text-align: right; /* Rechtsbündig */
   letter-spacing: 0.5px;
 }
 
@@ -146,18 +147,18 @@ body {
 .blinking-timer {
   font-size: 22px;
   font-weight: 700;
-  color: #ff3b30; /* Signalrot, blinkend */
+  color: #ff3b30;
   animation: blink-animation 1s steps(2, start) infinite;
 }
 
-/* Sektion 3: Bewegungslogo, schwebend nach links/rechts */
+/* Sektion 3: Bewegungslogo, schwebend nach links/rechts (angepasst: kleiner) */
 .animation-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px 0;
+  padding: 10px 0;
   overflow: hidden;
-  height: 90px;
+  height: 60px;
 }
 
 .floating-logo-container {
@@ -167,10 +168,10 @@ body {
 }
 
 .floating-logo {
-  height: 55px;
+  height: 35px; /* Kleiner */
   width: auto;
   object-fit: contain;
-  animation: sway-animation 4s ease-in-out infinite alternate;
+  animation: sway-animation 4s linear infinite alternate; /* Linear für gerade Linie */
 }
 
 /* Sektion 4: QR-Code ganzseitig / groß */
@@ -185,13 +186,13 @@ body {
 .qr-container {
   width: 100%;
   max-width: 320px;
-  background-color: #ffffff; /* Weißer Kontrasthintergrund für den QR-Code */
+  background-color: #f0f0f0; /* Leicht grauer Hintergrund für Kontrast */
   border-radius: 18px;
   padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .qr-image {
@@ -201,7 +202,7 @@ body {
   object-fit: contain;
 }
 
-/* Sektion 5: Benutzernamen ganz unten */
+/* Sektion 5: Benutzernamen ganz unten (angepasst: nicht fett) */
 .footer-names {
   display: flex;
   flex-direction: column;
@@ -211,7 +212,7 @@ body {
 
 .user-name {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400; /* Nicht fett */
 }
 
 .colleague-name {
@@ -222,23 +223,19 @@ body {
 
 /* --- ANIMATIONEN --- */
 
-/* Blinken */
 @keyframes blink-animation {
   to {
     visibility: hidden;
   }
 }
 
-/* Schwebende Animation von links nach rechts */
+/* Schwebende Animation von links nach rechts (gerade Linie) */
 @keyframes sway-animation {
   0% {
-    transform: translateX(-40px) rotate(-4deg);
-  }
-  50% {
-    transform: translateY(-5px);
+    transform: translateX(-40px);
   }
   100% {
-    transform: translateX(40px) rotate(4deg);
+    transform: translateX(40px);
   }
 }
 
