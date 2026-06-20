@@ -3,66 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>HNV Authentifizierung</title>
-  
-  <!-- PWA & iOS Meta Tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="HNV Auth">
-  
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
-  <link rel="apple-touch-icon" href="data/logo.svg">
 </head>
 <body>
-
-  <!-- Main Container -->
   <div class="app-container">
-    
-    <!-- Top Bar Navigation -->
     <header class="top-bar">
-      <div class="back-btn" id="backBtn">
-        <!-- Ein einfacher Pfeil nach links (<) -->
-        <span class="arrow-left">&#10094;</span>
-      </div>
-      <div class="top-title"></div>
-      <div class="menu-btn" id="menuBtn">
-        <!-- Drei Punkte nebeneinander (...) -->
-        <span class="ellipsis">&#8230;</span>
-      </div>
+      <div class="back-btn" id="backBtn">&#10094;</div>
+      <div class="menu-btn" id="menuBtn">&#8230;</div>
     </header>
 
-    <header class="top-bar">
-      <div class="back-btn" id="backBtn">
-        <span class="arrow-left">&#10094;</span>
-      </div>
-      <div class="menu-btn" id="menuBtn">
-        <span class="ellipsis">&#8230;</span>
-      </div>
-    </header>
-
-    <!-- Main Content Area -->
     <main class="content">
-      
       <section class="logo-row">
-        <div class="logo-wrapper">
-          <img src="data/logo.svg" alt="HNV Logo" class="main-logo" id="mainLogoImg">
-        </div>
+        <img src="data/logo.svg" alt="HNV Logo" class="main-logo" id="mainLogoImg">
         <div class="center-number" id="displayNumber">65432</div>
         <div class="logo-row-spacer"></div>
       </section>
 
       <section class="info-row">
-        <div class="date-row">
-          <span class="live-date" id="displayDate">01.01.2026 07:05</span>
-        </div>
-        <div class="blinking-timer" id="timer">2:00</div>
+        <span class="live-date" id="displayDate">01.01.2026 07:05</span>
+        <span class="blinking-timer" id="timer">2:00</span>
       </section>
 
       <section class="animation-row">
-        <div class="floating-logo-container">
-          <img src="data/bewegungslogo.png" alt="Bewegungslogo" class="floating-logo">
-        </div>
+        <img src="data/bewegungslogo.png" alt="Bewegungslogo" class="floating-logo">
       </section>
 
       <section class="qr-row">
@@ -83,33 +50,17 @@
       </footer>
     </main>
 
-    <!-- Settings Modal -->
     <div class="modal-overlay" id="settingsModal">
       <div class="modal-content">
-        <div class="modal-header">
-          <h3>Einstellungen</h3>
-          <span class="close-modal" id="closeModalBtn">&times;</span>
-        </div>
-        <div class="modal-body">
-          <form id="settingsForm">
-            <div class="form-group">
-              <label for="qrUpload">QR-Code ersetzen (JPG)</label>
-              <input type="file" id="qrUpload" accept="image/jpeg, image/jpg">
-            </div>
-            <div class="form-group">
-              <label for="inputNumber">Nummer</label>
-              <input type="text" id="inputNumber">
-            </div>
-            <button type="submit" class="btn btn-primary">Speichern</button>
-          </form>
-        </div>
+        <h3>Einstellungen</h3>
+        <form id="settingsForm">
+          <input type="file" id="qrUpload" accept="image/jpeg, image/jpg">
+          <input type="text" id="inputNumber" placeholder="Nummer">
+          <button type="submit">Speichern</button>
+        </form>
       </div>
     </div>
-
-
   </div>
-
-  <!-- JavaScript -->
   <script src="app.js"></script>
 </body>
 </html>
