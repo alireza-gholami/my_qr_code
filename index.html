@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>HNV Authentifizierung</title>
+  
+  <!-- PWA & iOS Meta Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="HNV Auth">
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <link rel="apple-touch-icon" href="data/logo.svg">
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Top Bar Navigation -->
+    <header class="top-bar">
+      <div class="back-btn" id="backBtn">
+        <!-- Ein einfacher Pfeil nach links (<) -->
+        <span class="arrow-left">&#10094;</span>
+      </div>
+      <div class="top-title"></div>
+      <div class="menu-btn" id="menuBtn">
+        <!-- Drei Punkte nebeneinander (...) -->
+        <span class="ellipsis">&#8230;</span>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="content">
+      
+      <!-- Erste Sektion: Logo und Nummer -->
+      <section class="logo-row">
+        <div class="logo-wrapper">
+          <img src="data/logo.svg" alt="HNV Logo" class="main-logo" id="mainLogoImg">
+        </div>
+        <div class="center-number" id="displayNumber">00000</div>
+        <!-- Platzhalter zum Ausrichten, falls nötig -->
+        <div class="logo-row-spacer"></div>
+      </section>
+
+      <!-- Linie darunter -->
+      <div class="divider"></div>
+
+      <!-- Zweite Sektion: Datum, Deutschland Kollegen, Blinking Timer -->
+      <section class="info-row">
+        <div class="left-info">
+          <div class="live-date" id="displayDate">01.01.2026 07:05</div>
+          <div class="country-text">Deutschland Kollegen</div>
+        </div>
+        <div class="right-info">
+          <div class="blinking-timer">2:00</div>
+        </div>
+      </section>
+
+      <!-- Dritte Sektion: Bewegungslogo, schwebend nach links/rechts -->
+      <section class="animation-row">
+        <div class="floating-logo-container">
+          <img src="data/bewegungslogo.png" alt="Bewegungslogo" class="floating-logo">
+        </div>
+      </section>
+
+      <!-- Vierte Sektion: QR-Code ganzseitig / groß -->
+      <section class="qr-row">
+        <div class="qr-container">
+          <img src="data/QR_deWP.svg.png" alt="QR Code" class="qr-image" id="displayQR">
+        </div>
+      </section>
+
+      <!-- Fünfte Sektion: Benutzernamen -->
+      <footer class="footer-names">
+        <div class="user-name" id="displayUserName">Max Mustermann</div>
+        <div class="colleague-name" id="displayColleagueName">Kollege Name</div>
+      </footer>
+
+    </main>
+
+    <!-- Settings Modal (Einstellungsmenü) -->
+    <div class="modal-overlay" id="settingsModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Einstellungen</h3>
+          <span class="close-modal" id="closeModalBtn">&times;</span>
+        </div>
+        
+        <div class="modal-body">
+          <form id="settingsForm">
+            <!-- QR-Code Upload -->
+            <div class="form-group">
+              <label for="qrUpload" class="custom-file-upload">
+                <span>QR-Code hochladen (JPG/JPEG)</span>
+                <input type="file" id="qrUpload" accept="image/jpeg, image/jpg">
+              </label>
+              <div id="fileStatus" class="file-status">Keine Datei ausgewählt</div>
+            </div>
+
+            <!-- Nummer in der Mitte -->
+            <div class="form-group">
+              <label for="inputNumber">Nummer (Mitte)</label>
+              <input type="text" id="inputNumber" placeholder="Z.B. 12345">
+            </div>
+
+            <!-- Mein Name -->
+            <div class="form-group">
+              <label for="inputUserName">Mein Name</label>
+              <input type="text" id="inputUserName" placeholder="Dein Name">
+            </div>
+
+            <!-- Kollegen Name -->
+            <div class="form-group">
+              <label for="inputColleagueName">Kollegen Name</label>
+              <input type="text" id="inputColleagueName" placeholder="Kollegen Name">
+            </div>
+
+            <!-- Button-Group für zukünftige Erweiterungen leicht anpassbar -->
+            <div class="form-actions">
+              <button type="button" class="btn btn-secondary" id="cancelBtn">Abbrechen</button>
+              <button type="submit" class="btn btn-primary">Speichern</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
