@@ -5,7 +5,7 @@ const APP_STATE = {
     userName: "Max Mustermann", 
     ticketTitle: "Deutschland Ticket",
     validFrom: "01.06.2026 00:00",
-    validUntil: "01.06.2026 03:00",
+    validUntil: "01.07.2026 03:00",
     qrCodeData: null, 
     logoSpeed: 2,
     logoRange: 130,
