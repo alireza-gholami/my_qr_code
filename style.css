@@ -1,10 +1,11 @@
-/* Reset */
+/* Reset und Basis-Styling */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg-color: #ffffff; --text-color: #000000; --sway-range: 130px; --qr-size: 255px; }
 body { background: #fff; color: #000; font-family: -apple-system, sans-serif; overflow-x: hidden; }
 .app-container { display: flex; flex-direction: column; min-height: 100vh; padding: 10px; padding-bottom: 70px; }
 
 /* Text Einheitlichkeit */
-.live-date, .blinking-timer, .center-number, .user-name, .ausweis-label, .ticket-title, .valid-from, .valid-until, .ticket-info, .job-text {
+.live-date, .blinking-timer, .center-number, .user-name, .ausweis-label, .ticket-title, .valid-from, .valid-until {
   font-family: -apple-system, sans-serif !important; font-size: 16px !important; font-weight: 400 !important; color: #000000 !important;
 }
 
@@ -14,15 +15,15 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 
 /* Sektion 1 */
 .logo-row { display: grid; grid-template-columns: 80px 1fr 80px; align-items: center; }
-.main-logo { height: 36px; width: auto; object-fit: contain; } /* 40px * 0.9 = 36px */
+.main-logo { height: 36px; width: auto; object-fit: contain; } /* Zurückgesetzt */
 .center-number { font-size: 26px; transform: translateY(-10px); text-align: center; }
 
 /* Sektion 2 */
 .info-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
 .date-row { display: flex; flex-direction: column; gap: 4px; }
-.ticket-info { margin-left: 20px; } /* ~3 chars shift */
+.ticket-info { margin-left: 20px; }
 .job-text { margin-left: 20px; text-align: left; }
-.blinking-timer { font-weight: 700 !important; font-size: 16px !important; animation: blink 1s steps(2, start) infinite; }
+.blinking-timer { font-weight: 700 !important; font-size: 16px !important; transform: translateY(-5px); animation: blink 1s steps(2, start) infinite; }
 
 /* Sektion 3 - Animation & Bounds */
 .animation-row { display: flex; justify-content: center; height: 50px; width: 100vw; margin-left: -10px; overflow: hidden; }
@@ -30,7 +31,7 @@ body { background: #fff; color: #000; font-family: -apple-system, sans-serif; ov
 
 /* Sektion 4 */
 .qr-row { display: flex; justify-content: center; padding: 5px 0; width: 100vw; margin-left: -10px; }
-.qr-container { width: 255px; padding: 0; } /* 300px - 15% = 255px */
+.qr-container { width: var(--qr-size); padding: 0; }
 .qr-image { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; }
 
 /* Footer */
